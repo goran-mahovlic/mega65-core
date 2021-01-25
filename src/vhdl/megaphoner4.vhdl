@@ -1165,8 +1165,6 @@ begin
     -- @IO:GS $D61A.1 SYSCTL:DVI Control digital video as DVI (disables audio)
     -- @IO:GS $D61A.0 SYSCTL:AUDMUTE Mute digital video audio (MEGA65 R2 only)
 
-
-
     h_audio_right <= audio_right;
     h_audio_left <= audio_left;
     -- toggle signed/unsigned audio flipping
@@ -1175,7 +1173,7 @@ begin
       h_audio_left(19) <= not audio_left(19);
     end if;
     -- LED on main board
-    led <= portp(4);
+    led <= v_vga_hsync;
 
     if rising_edge(pixelclock) then
       hsync <= v_vga_hsync;
@@ -1188,8 +1186,8 @@ begin
       hdmiblue <= v_blue;
       vga_red <= v_red(7 downto 4);
       vga_green <= v_green(7 downto 4);
-      vga_blue <= v_blue(7 downto 4);   
-      
+      vga_blue <= v_blue(7 downto 4);
+
     end if;
 
     -- XXX DEBUG: Allow showing audio samples on video to make sure they are
