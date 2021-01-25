@@ -18,7 +18,8 @@ set_false_path -from [get_clocks cpuclock] -to [get_clocks ethclock]
 set_false_path -from [get_clocks ethclock] -to [get_clocks cpuclock]
 
 # Allow sub-optimal placement of MMCMs
-set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets clocks1/clock124mhz]
+# set_property CLOCK_DEDICATED_ROUTE BACKBONE [get_nets clocks1/clock124mhz]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clocks1/clock124mhz]
 
 # HDMI output
 ############## HDMIOUT define##################
@@ -123,8 +124,8 @@ set_property -dict {PACKAGE_PIN U6 IOSTANDARD LVCMOS33} [get_ports modem2_uart_r
 set_property -dict {PACKAGE_PIN U7 IOSTANDARD LVCMOS33} [get_ports modem2_uart_tx]
 
 # VGA port
-set_property -dict {PACKAGE_PIN P3 IOSTANDARD LVCMOS33} [get_ports vga_vsync]
-set_property -dict {PACKAGE_PIN T1 IOSTANDARD LVCMOS33} [get_ports vga_hsync]
+set_property -dict {PACKAGE_PIN P3 IOSTANDARD LVCMOS33} [get_ports vsync]
+set_property -dict {PACKAGE_PIN T1 IOSTANDARD LVCMOS33} [get_ports hsync]
 set_property -dict {PACKAGE_PIN M3 IOSTANDARD LVCMOS33} [get_ports {vga_red[0]}]
 set_property -dict {PACKAGE_PIN M2 IOSTANDARD LVCMOS33} [get_ports {vga_red[1]}]
 set_property -dict {PACKAGE_PIN M1 IOSTANDARD LVCMOS33} [get_ports {vga_red[2]}]
